@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PitchPerfect BD – World Cup 2026 Jerseys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #00e676; --dark: #080f14; --card-bg: #0d1a22;
+      --gold: #ffd700; --text: #e8f0f7; --muted: #7a9bb5;
+      --insta: #E1306C; --messenger: #0084ff; --red: #ff3d3d;
+    }
+    body { background: var(--dark); color: var(--text); font-family: 'Barlow', sans-serif; overflow-x: hidden; }
+    header { position: relative; text-align: center; padding: 60px 20px 40px; background: linear-gradient(180deg, #001a0a 0%, var(--dark) 100%); overflow: hidden; }
+    header::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(0,230,118,0.15) 0%, transparent 70%); pointer-events: none; }
+    .badge { display: inline-block; background: var(--green); color: #000; font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 3px; padding: 4px 14px; border-radius: 2px; margin-bottom: 16px; }
+    header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 12vw, 110px); line-height: 0.9; letter-spacing: 4px; color: #fff; text-shadow: 0 0 60px rgba(0,230,118,0.3); }
+    header h1 span { color: var(--green); }
+    header p.sub { margin-top: 14px; font-size: 16px; color: var(--muted); letter-spacing: 1px; }
+
+    .ticker-wrap { background: var(--green); overflow: hidden; white-space: nowrap; padding: 10px 0; }
+    .ticker { display: inline-block; animation: ticker 20s linear infinite; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #000; letter-spacing: 2px; }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    .section-title { text-align: center; padding: 50px 20px 10px; }
+    .section-title h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 6vw, 56px); letter-spacing: 3px; color: #fff; }
+    .section-title h2 span { color: var(--green); }
+    .section-title p { color: var(--muted); margin-top: 6px; font-size: 15px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; padding: 30px 24px 60px; max-width: 1300px; margin: 0 auto; }
+
+    .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); transition: transform 0.3s, box-shadow 0.3s; position: relative; }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,230,118,0.15); border-color: rgba(0,230,118,0.3); }
+    .card-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #fff; display: block; }
+    .card-body { padding: 16px 16px 18px; }
+    .team-flag { font-size: 11px; letter-spacing: 2px; font-weight: 700; color: var(--green); text-transform: uppercase; margin-bottom: 5px; }
+    .card-body h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: #fff; line-height: 1; }
+    .card-body .type { color: var(--muted); font-size: 12px; margin-top: 3px; }
+
+    .price-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .old-price { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--muted); text-decoration: line-through; letter-spacing: 1px; }
+    .new-price { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--red); letter-spacing: 1px; }
+    .new-price span { font-size: 15px; color: var(--muted); }
+    .discount-badge { background: var(--red); color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1px; padding: 3px 8px; border-radius: 4px; }
+
+    .sizes { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 10px; }
+    .size-tag { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 3px 8px; font-size: 11px; font-weight: 700; color: var(--muted); }
+
+    .btn-row { display: flex; gap: 8px; margin-top: 14px; }
+    .dm-btn { flex: 1; text-align: center; color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 1.5px; border-radius: 6px; padding: 11px 0; text-decoration: none; transition: transform 0.15s; }
+    .dm-btn:hover { transform: scale(1.02); }
+    .insta-btn { background: var(--insta); }
+    .messenger-btn { background: var(--messenger); }
+
+    .ribbon { position: absolute; top: 14px; left: -8px; background: #e53935; color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 12px; letter-spacing: 1px; padding: 4px 12px 4px 10px; clip-path: polygon(0 0, 100% 0, 92% 50%, 100% 100%, 0 100%); z-index: 2; }
+    .ribbon.gold { background: #b8860b; }
+
+    .contact-strip { background: linear-gradient(135deg, #00230e, #001a0a); border-top: 1px solid rgba(0,230,118,0.2); border-bottom: 1px solid rgba(0,230,118,0.2); padding: 40px 20px; text-align: center; }
+    .contact-strip h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 3px; color: #fff; margin-bottom: 10px; }
+    .contact-strip p { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+    .contact-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .big-dm-btn, .big-msg-btn { display: inline-flex; align-items: center; justify-content: center; color: #fff; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; padding: 14px 36px; border-radius: 8px; text-decoration: none; transition: transform 0.15s; }
+    .big-dm-btn { background: var(--insta); }
+    .big-msg-btn { background: var(--messenger); }
+    .big-dm-btn:hover, .big-msg-btn:hover { transform: scale(1.03); }
+
+    footer { text-align: center; padding: 30px 20px; color: var(--muted); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
+    footer strong { color: var(--green); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">⚽ FIFA WORLD CUP 2026</div>
+  <h1>PITCH<span>PERFECT</span></h1>
+  <p class="sub">Official World Cup 2026 Jerseys · Bangladesh · 20 Kits Available</p>
+</header>
+
+<div class="ticker-wrap">
+  <span class="ticker">🔥 LIMITED SALE — 12% OFF! &nbsp;·&nbsp; Was 1250 Taka Now Only 1100 Taka &nbsp;·&nbsp; Sizes S to 2XL &nbsp;·&nbsp; DM us on Instagram @pitchperfectbd or Facebook &nbsp;·&nbsp; Germany · Spain · Argentina · Brazil · Portugal · England · Belgium · Japan · USA · Croatia · France · Netherlands · Saudi Arabia &nbsp;·&nbsp; 🔥 LIMITED SALE — 12% OFF! &nbsp;·&nbsp; Was 1250 Taka Now Only 1100 Taka &nbsp;·&nbsp;</span>
+</div>
+
+<div class="section-title">
+  <h2>SHOP <span>JERSEYS</span></h2>
+  <p>🔥 Limited time sale — 12% off all jerseys!</p>
+</div>
+
+<div class="grid">
+
+<script>
+const instagramLink = "https://www.instagram.com/pitchperfectbd?igsh=eDBrc29mcTlpMTV6";
+const facebookLink = "https://www.facebook.com/share/1D7K2V7v5s/?mibextid=wwXIfr";
+
+const jerseys = [
+  ["germany-away.jpg", "🇩🇪 Germany", "GERMANY", "Away Kit · Adidas Originals", "12% OFF"],
+  ["germany-home.jpg", "🇩🇪 Germany", "GERMANY", "Home Kit · Adidas", "12% OFF"],
+  ["spain-home.jpg", "🇪🇸 Spain", "SPAIN", "Home Kit · Adidas", "12% OFF"],
+  ["spain-away.jpg", "🇪🇸 Spain", "SPAIN", "Away Kit · Adidas Originals", "12% OFF"],
+  ["argentina-home.jpg", "🇦🇷 Argentina", "ARGENTINA", "Home Kit · Adidas · WC 2022 Champions", "⭐ CHAMPIONS"],
+  ["argentina-away.jpg", "🇦🇷 Argentina", "ARGENTINA", "Away Kit · Adidas Originals", "12% OFF"],
+  ["brazil-home.jpg", "🇧🇷 Brazil", "BRAZIL", "Home Kit · Nike", "12% OFF"],
+  ["brazil-away.jpg", "🇧🇷 Brazil", "BRAZIL", "Away Kit · Jordan Brand", "12% OFF"],
+  ["portugal-home.jpg", "🇵🇹 Portugal", "PORTUGAL", "Home Kit · Puma", "12% OFF"],
+  ["portugal-away.jpg", "🇵🇹 Portugal", "PORTUGAL", "Away Kit · Puma", "12% OFF"],
+  ["england-home.jpg", "🏴 England", "ENGLAND", "Home Kit · Nike", "12% OFF"],
+  ["england-away.jpg", "🏴 England", "ENGLAND", "Away Kit · Nike", "12% OFF"],
+  ["belgium-home.jpg", "🇧🇪 Belgium", "BELGIUM", "Home Kit · Adidas", "12% OFF"],
+  ["japan-away.jpg", "🇯🇵 Japan", "JAPAN", "Away Kit · Adidas Originals", "12% OFF"],
+  ["usa-away.jpg", "🇺🇸 USA", "USA", "Away Kit · Nike · Host Nation", "12% OFF"],
+  ["croatia-home.jpg", "🇭🇷 Croatia", "CROATIA", "Home Kit · Nike", "12% OFF"],
+  ["france-home.jpg", "🇫🇷 France", "FRANCE", "Home Kit · Nike", "12% OFF"],
+  ["france-away.jpg", "🇫🇷 France", "FRANCE", "Away Kit · Nike", "12% OFF"],
+  ["netherlands-away.jpg", "🇳🇱 Netherlands", "NETHERLANDS", "Away Kit · Nike", "12% OFF"],
+  ["saudi-away.jpg", "🇸🇦 Saudi Arabia", "SAUDI ARABIA", "Away Kit · Adidas", "12% OFF"]
+];
+
+document.write(jerseys.map(jersey => `
+  <div class="card">
+    <div class="ribbon ${jersey[4].includes('CHAMPIONS') ? 'gold' : ''}">${jersey[4]}</div>
+    <img class="card-img" src="${jersey[0]}" alt="${jersey[2]}"/>
+    <div class="card-body">
+      <div class="team-flag">${jersey[1]}</div>
+      <h3>${jersey[2]}</h3>
+      <div class="type">${jersey[3]}</div>
+      <div class="price-row">
+        <span class="old-price">1250 ৳</span>
+        <span class="new-price">1100 <span>BDT</span></span>
+        <span class="discount-badge">12% OFF</span>
+      </div>
+      <div class="sizes">
+        <span class="size-tag">S</span>
+        <span class="size-tag">M</span>
+        <span class="size-tag">L</span>
+        <span class="size-tag">XL</span>
+        <span class="size-tag">2XL</span>
+      </div>
+      <div class="btn-row">
+        <a href="${instagramLink}" class="dm-btn insta-btn" target="_blank">INSTAGRAM DM</a>
+        <a href="${facebookLink}" class="dm-btn messenger-btn" target="_blank">MESSENGER</a>
+      </div>
+    </div>
+  </div>
+`).join(""));
+</script>
+
+</div>
+
+<div class="contact-strip">
+  <h3>READY TO ORDER?</h3>
+  <p>DM us on Instagram or Messenger — we deliver all across Bangladesh</p>
+  <div class="contact-btns">
+    <a href="https://www.instagram.com/pitchperfectbd?igsh=eDBrc29mcTlpMTV6" class="big-dm-btn" target="_blank">INSTAGRAM DM</a>
+    <a href="https://www.facebook.com/share/1D7K2V7v5s/?mibextid=wwXIfr" class="big-msg-btn" target="_blank">MESSENGER DM</a>
+  </div>
+</div>
+
+<footer>
+  <strong>PitchPerfect BD</strong> · World Cup 2026 Jerseys · Sale Price 1100 BDT (Was 1250) · 12% OFF · Sizes S–2XL
+</footer>
+
+</body>
+</html>
