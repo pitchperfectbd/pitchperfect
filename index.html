@@ -12,7 +12,6 @@
 
     :root {
       --dark: #05070d;
-      --card: #101827;
       --green: #00e676;
       --blue: #00c2ff;
       --pink: #ff2f8f;
@@ -20,7 +19,6 @@
       --red: #ff3d3d;
       --text: #ffffff;
       --muted: #9db2c7;
-      --insta: #e1306c;
       --messenger: #0084ff;
     }
 
@@ -41,7 +39,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(5,7,13,0.82);
+      background: rgba(5,7,13,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 14px 24px;
@@ -137,7 +135,6 @@
     .primary-btn {
       background: var(--green);
       color: #000;
-      box-shadow: 0 0 35px rgba(0,230,118,0.25);
     }
 
     .secondary-btn {
@@ -213,7 +210,6 @@
       font-family: 'Bebas Neue', sans-serif;
       font-size: 30px;
       letter-spacing: 2px;
-      box-shadow: 0 20px 50px rgba(255,47,143,0.22);
     }
 
     .ticker-wrap {
@@ -279,6 +275,7 @@
       padding: 22px;
       text-align: center;
       transition: 0.2s;
+      cursor: pointer;
     }
 
     .cat:hover {
@@ -319,7 +316,6 @@
     .card:hover {
       transform: translateY(-8px);
       border-color: rgba(0,230,118,0.45);
-      box-shadow: 0 25px 70px rgba(0,230,118,0.16);
     }
 
     .card-img {
@@ -515,8 +511,6 @@
     .big-dm-btn { background: linear-gradient(135deg, #feda75, #d62976, #962fbf, #4f5bd5); }
     .big-msg-btn { background: var(--messenger); }
 
-    .big-dm-btn:hover, .big-msg-btn:hover { transform: scale(1.04); }
-
     footer {
       text-align: center;
       padding: 32px 20px;
@@ -610,16 +604,17 @@
   <div class="section-title">
     <div class="mini">Browse</div>
     <h2>SHOP BY <span>TEAM</span></h2>
-    <p>Choose your country. Rep your football identity.</p>
+    <p>Click a team to show only that team’s jerseys.</p>
   </div>
 
   <div class="categories">
-    <div class="cat"><h3>🇦🇷 Argentina</h3><p>Home + Away</p></div>
-    <div class="cat"><h3>🇧🇷 Brazil</h3><p>Home + Away</p></div>
-    <div class="cat"><h3>🇩🇪 Germany</h3><p>Home + Away</p></div>
-    <div class="cat"><h3>🇪🇸 Spain</h3><p>Home + Away</p></div>
-    <div class="cat"><h3>🇵🇹 Portugal</h3><p>Home + Away</p></div>
-    <div class="cat"><h3>🇫🇷 France</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('ARGENTINA')"><h3>🇦🇷 Argentina</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('BRAZIL')"><h3>🇧🇷 Brazil</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('GERMANY')"><h3>🇩🇪 Germany</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('SPAIN')"><h3>🇪🇸 Spain</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('PORTUGAL')"><h3>🇵🇹 Portugal</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('FRANCE')"><h3>🇫🇷 France</h3><p>Home + Away</p></div>
+    <div class="cat" onclick="filterJerseys('ALL')"><h3>🌍 All Teams</h3><p>Show all jerseys</p></div>
   </div>
 </section>
 
@@ -627,7 +622,7 @@
   <div class="section-title">
     <div class="mini">Featured</div>
     <h2>NEW <span>DROPS</span></h2>
-    <p>All jerseys are on sale for 1100 BDT.</p>
+    <p id="filterText">All jerseys are on sale for 1100 BDT.</p>
   </div>
 
   <div class="grid" id="productGrid"></div>
@@ -702,37 +697,55 @@
   ];
 
   const productGrid = document.getElementById("productGrid");
+  const filterText = document.getElementById("filterText");
 
-  productGrid.innerHTML = jerseys.map(jersey => `
-    <div class="card">
-      <div class="ribbon ${jersey[4].includes("CHAMPIONS") ? "gold" : ""}">${jersey[4]}</div>
-      <img class="card-img" src="${jersey[0]}" alt="${jersey[2]} Jersey"/>
-      <div class="card-body">
-        <div class="team-flag">${jersey[1]}</div>
-        <h3>${jersey[2]}</h3>
-        <div class="type">${jersey[3]}</div>
+  function showJerseys(list) {
+    productGrid.innerHTML = list.map(jersey => `
+      <div class="card">
+        <div class="ribbon ${jersey[4].includes("CHAMPIONS") ? "gold" : ""}">${jersey[4]}</div>
+        <img class="card-img" src="${jersey[0]}" alt="${jersey[2]} Jersey"/>
+        <div class="card-body">
+          <div class="team-flag">${jersey[1]}</div>
+          <h3>${jersey[2]}</h3>
+          <div class="type">${jersey[3]}</div>
 
-        <div class="price-row">
-          <span class="old-price">1250 ৳</span>
-          <span class="new-price">1100 <span>BDT</span></span>
-          <span class="discount-badge">12% OFF</span>
-        </div>
+          <div class="price-row">
+            <span class="old-price">1250 ৳</span>
+            <span class="new-price">1100 <span>BDT</span></span>
+            <span class="discount-badge">12% OFF</span>
+          </div>
 
-        <div class="sizes">
-          <span class="size-tag">S</span>
-          <span class="size-tag">M</span>
-          <span class="size-tag">L</span>
-          <span class="size-tag">XL</span>
-          <span class="size-tag">2XL</span>
-        </div>
+          <div class="sizes">
+            <span class="size-tag">S</span>
+            <span class="size-tag">M</span>
+            <span class="size-tag">L</span>
+            <span class="size-tag">XL</span>
+            <span class="size-tag">2XL</span>
+          </div>
 
-        <div class="btn-row">
-          <a href="${instagramLink}" class="dm-btn insta-btn" target="_blank">ADD TO CART</a>
-          <a href="${facebookLink}" class="dm-btn messenger-btn" target="_blank">ORDER NOW</a>
+          <div class="btn-row">
+            <a href="${instagramLink}" class="dm-btn insta-btn" target="_blank">ADD TO CART</a>
+            <a href="${facebookLink}" class="dm-btn messenger-btn" target="_blank">ORDER NOW</a>
+          </div>
         </div>
       </div>
-    </div>
-  `).join("");
+    `).join("");
+  }
+
+  function filterJerseys(team) {
+    if (team === "ALL") {
+      showJerseys(jerseys);
+      filterText.textContent = "All jerseys are on sale for 1100 BDT.";
+    } else {
+      const filtered = jerseys.filter(jersey => jersey[2] === team);
+      showJerseys(filtered);
+      filterText.textContent = team + " jerseys are showing now.";
+    }
+
+    document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+  }
+
+  showJerseys(jerseys);
 </script>
 
 </body>
